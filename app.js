@@ -23,14 +23,21 @@ mqttClient.on('message', function(topic, message) {
 	if (matches[0] === null) {
 		throw new Error("invalid command");
 	}
-	if (message != "") {
+	if (message.toString() !== "" && message.toString() !== "empty") {
 		winston.info("sending command "+matches[0]+" to mpd with arguments "+[message]);
-		mpdClient.sendCommand(mpd.cmd(matches[0], [message]));
+		mpdClient.sendCommand(mpd.cmd(matches[0], [message]), function(err, msg) {
+			if (err) {
+				winston.error(err);
+			}
+		});
 	} else {
 		winston.info("sending command "+matches[0]+" to mpd");
-		mpdClient.sendCommand(mpd.cmd(matches[0], []));
+		mpdClient.sendCommand(mpd.cmd(matches[0], []), function(err, msg) {
+			if (err) {
+				winston.error(err);
+			}
+		});
 	}
-
 });
 
 mpdClient.on('system', function() {
