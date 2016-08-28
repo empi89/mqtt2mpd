@@ -1,0 +1,18 @@
+{
+  "name": "mqtt2mpd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "config": "^1.21.0",
+    "mpd": "^1.3.0",
+    "mqtt": "^1.14.1",
+    "winston": "^2.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
