@@ -25,7 +25,7 @@ Dimmer Mpd_Office_VolumeControl    "Volume [%d%%]"     (Music)
 		<[mosquitto:/office/mpd/status/volume:state:default]],
 		>[mosquitto:/office/mpd/command/volume:command:INCREASE:+5],
 		>[mosquitto:/office/mpd/command/volume:command:DECREASE:-5],
-		>[mosquitto:/office/mpd/command/volume:command:PERCENT:default]
+		>[mosquitto:/office/mpd/command/setvol:command:*:default]
 	"}
 
 ```
