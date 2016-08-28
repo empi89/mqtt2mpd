@@ -24,8 +24,9 @@ mqttClient.on('message', function(topic, message) {
 		throw new Error("invalid command");
 	}
 	if (message.toString() !== "" && message.toString() !== "empty") {
-		winston.info("sending command "+matches[0]+" to mpd with arguments "+[message]);
-		mpdClient.sendCommand(mpd.cmd(matches[0], [message]), function(err, msg) {
+		var args = Array(message.toString());
+		winston.info("sending command "+matches[0]+" to mpd with arguments "+args);
+		mpdClient.sendCommand(mpd.cmd(matches[0], args), function(err, msg) {
 			if (err) {
 				winston.error(err);
 			}
